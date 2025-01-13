@@ -1,7 +1,7 @@
 const baseUrl = "https://api.weatherapi.com/v1/forecast.json?key=33ffbf55c9c04658acb193505251301&days=4&q=";
 const searchBox = document.getElementById('search-box');
 const searchBtn = document.getElementById('search-btn');
-const errors = document.getElementById('error');
+const error = document.getElementById('error');
 
 async function getWeather(city){
     try {
@@ -9,12 +9,17 @@ async function getWeather(city){
         const response = await fetch(url);
         const data = await response.json();
 
-        errors.textContent = "";
+        if (data.error) {
+            throw new Error(data.error.message);
+        }
+
+        error.textContent = "";
         return data;
     } 
     catch (err) {
+        console.log("hello");   
         console.error('Error fetching weather:', err);
-        errors.textContent = "*Invalid city name";
+        error.textContent = "*Invalid city name";   
     }
 }
 

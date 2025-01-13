@@ -146,11 +146,6 @@
 #search-box::placeholder{
     color: rgb(168, 168, 168);
 }
-input:-webkit-autofill {
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset;
-    -webkit-text-fill-color: white; /* Ensures text is visible */
-}
 #error{
     color: red;
     font-size: 12px;
