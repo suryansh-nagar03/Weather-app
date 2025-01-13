@@ -1,3 +1,5 @@
+import { updateInfo } from './updateInfo.js';  // Note the .js extension is required
+
 const baseUrl = "https://api.weatherapi.com/v1/forecast.json?key=33ffbf55c9c04658acb193505251301&days=4&q=";
 const searchBox = document.getElementById('search-box');
 const searchBtn = document.getElementById('search-btn');
@@ -13,6 +15,9 @@ async function getWeather(city){
             throw new Error(data.error.message);
         }
 
+        console.log(data);
+
+        updateInfo(data);
         error.textContent = "";
         return data;
     } 
@@ -22,6 +27,12 @@ async function getWeather(city){
         error.textContent = "*Invalid city name";   
     }
 }
+
+getWeather("Noida");
+searchBtn.addEventListener('click', async () => {
+    const city = searchBox.value;
+    await getWeather(city);
+});
 
 // function getCityName() {
 //     if ("geolocation" in navigator) {
@@ -57,9 +68,3 @@ async function getWeather(city){
 //   }
 
 //   console.log(getCityName());
-
-searchBtn.addEventListener('click', async () => {
-    const city = searchBox.value;
-    const weather = await getWeather(city);
-    console.log(weather);
-});

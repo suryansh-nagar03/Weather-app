@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="design.css">
-    <script src="script.js" async></script>
+    <script src="index.js" type="module" async></script>
 </head>
 <body>
     <div class="workspace">
         <div class="left-panel">
             <div class="left">
                 <div class="location-info">
-                    <div id="weather">Sunny</div>
-                    <div id="location">New Delhi, India</div>
+                    <div id="weather"></div>
+                    <div id="location"></div>
                     <div class="date-time">
                         <div id="date">Monday, Jan 13 2025</div>
                         <div id="last-updated">10:30 (Last updated)</div>
                     </div>
                     <div class="temp-info">
-                        <div id="temp">14°C</div>
-                        <div id="weather-icon">🌞</div>
+                        <div id="temp"></div>
+                        <img id="weather-icon"></img>
                     </div>
                 </div>
                 <div class="prediction-type">
@@ -69,23 +69,23 @@
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 5.png" alt="">
-                        <div class="parameter">Max Temp.</div>
+                        <div class="parameter" id="max-temp">Max Temp.</div>
                     </div>
-                    <div class="value">14°C</div>
+                    <div class="value" id="val1">14°C</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 6.png" alt="">
-                        <div class="parameter">Min Temp.</div>
+                        <div class="parameter" id="min-temp">Min Temp.</div>
                     </div>
-                    <div class="value">14°C</div>
+                    <div class="value" id="val2">14°C</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 7.png" alt="">
-                        <div class="parameter">Feels like</div>
+                        <div class="parameter" id="feels">Feels like</div>
                     </div>
-                    <div class="value">14°C</div>
+                    <div class="value" id="val3">14°C</div>
                 </div>
             </div>
             <div class="weather-cards">
@@ -93,30 +93,30 @@
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 8.png" alt="">
-                        <div class="parameter">Precipitation</div>
+                        <div class="parameter" id="precipitation">Precipitation</div>
                     </div>
-                    <div class="value">0%</div>
+                    <div class="value" id="val4">0%</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 9.png" alt="">
-                        <div class="parameter">Humidity</div>
+                        <div class="parameter" id="humidity">Humidity</div>
                     </div>
-                    <div class="value">34%</div>
+                    <div class="value" id="val5">34%</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 10.png" alt="">
-                        <div class="parameter">Wind</div>
+                        <div class="parameter" id="wind">Wind</div>
                     </div>
-                    <div class="value">2.2mph N</div>
+                    <div class="value" id="val6">2.2mph N</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 11.png" alt="">
                         <div class="parameter">Pressure</div>
                     </div>
-                    <div class="value">1020mb</div>
+                    <div class="value" id="val7">1020mb</div>
                 </div>
             </div>
             <div class="weather-cards">
@@ -124,23 +124,23 @@
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 12.png" alt="">
-                        <div class="parameter">Sunrise</div>
+                        <div class="parameter" id="sunrise">Sunrise</div>
                     </div>
-                    <div class="value">6:30 AM</div>
+                    <div class="value" id="val8">6:30 AM</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 13.png" alt="">
                         <div class="parameter">Sunset</div>
                     </div>
-                    <div class="value">5:38 PM</div>
+                    <div class="value" id="val9">5:38 PM</div>
                 </div>
                 <div class="sub-group">
                     <div class="sub-heading">
                         <img src="assets/asset 14.png" alt="">
-                        <div class="parameter">Moon Phase</div>
+                        <div class="parameter" id="moon">Moon Phase</div>
                     </div>
-                    <div class="value">Full Moon</div>
+                    <div class="value" id="val10">Full Moon</div>
                 </div>
             </div>
         </div>
