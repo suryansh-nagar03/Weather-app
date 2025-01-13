@@ -29,8 +29,85 @@
     position: fixed;
     top: 0;
 }
+.location-info{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+    flex-direction: column;
+}
+#weather{
+    font-size: 40px;
+    font-weight: bold;
+}
+#location{
+    font-size: 20px;
+    font-weight: 100;
+}
+.date-time{
+    font-size: 14px;
+    font-weight: 100;
+    padding-bottom: 20px;
+}
+.temp-info{
+    font-size: 48px;
+    font-weight: bold;
+}
 
-
+.prediction-type{
+    display: flex;
+    gap: 10px;
+    padding-top: 40px;
+    gap: 40px;
+}
+.options{
+    display: flex;
+    gap: 20px;
+}
+.buttons{
+    font-size: 15px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    min-width: 60px;
+}
+.buttons:hover{
+    color: rgb(168, 168, 168);
+    border-color: rgb(168, 168, 168);
+}
+.buttons:focus{
+    outline: none;
+    border: 1px solid rgb(234, 231, 231);
+    border-radius: 5px;
+}
+.navigation{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.prev,.next{
+    font-size: 20px;
+    cursor: pointer;
+    filter: invert(1);
+    z-index: 10; 
+}
+.prev svg, .next svg{
+    width: 20px; 
+    height: 20px; 
+    cursor: pointer; 
+    filter: invert(0); 
+}
+.circles img{
+    fill: white;
+    width: 11px;
+    filter: invert(1);
+    cursor: pointer;
+}
+.circles img:focus{
+    fill: white;
+}
 
 
 
@@ -41,7 +118,7 @@
     backdrop-filter: blur(10px);
     background-color: rgba(21, 21, 21, 0.5);
 }
-svg {
+#search-btn svg {
     position: absolute;
     right: 0;
     top: 0;
@@ -59,15 +136,20 @@ svg {
 }
 #search-box{
     color: white;
-    width: 90%;
+    min-width: 300px;
     border: none;
-    background: transparent;
+    background: transparent !important;
     border-bottom: 1px solid white;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
 }
 #search-box::placeholder{
     color: rgb(168, 168, 168);
+}
+input:-webkit-autofill {
+    background: transparent !important;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: white; /* Ensures text is visible */
 }
 #error{
     color: red;
