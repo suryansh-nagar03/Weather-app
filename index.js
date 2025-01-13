@@ -34,6 +34,13 @@ searchBtn.addEventListener('click', async () => {
     await getWeather(city);
     searchBox.value = "";
 });
+searchBox.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+        const city = searchBox.value;
+        await getWeather(city);
+        searchBox.value = "";
+    }
+});
 
 // function getCityName() {
 //     if ("geolocation" in navigator) {
