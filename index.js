@@ -32,6 +32,7 @@ getWeather("Noida");
 searchBtn.addEventListener('click', async () => {
     const city = searchBox.value;
     await getWeather(city);
+    searchBox.value = "";
 });
 
 // function getCityName() {
