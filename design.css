@@ -52,11 +52,14 @@
     font-size: 48px;
     font-weight: bold;
 }
+#weather-icon{
+    width: 100px;
+    height: 100px;
+}
 
 .prediction-type{
     display: flex;
-    gap: 10px;
-    padding-top: 40px;
+    padding-top: 0px;
     gap: 40px;
 }
 .options{
@@ -67,19 +70,22 @@
     font-size: 15px;
     background: transparent;
     color: white;
-    border: 1px solid white;
     border: none;
     cursor: pointer;
     padding: 2px;
     min-width: 60px;
 }
+.hidden{
+    display: none;
+}
 .buttons:hover{
     color: rgb(168, 168, 168);
-    border-color: rgb(168, 168, 168);
+    border-color: rgb(168, 168, 168)
 }
 .buttons:focus{
     outline: none;
-    border: 1px solid rgb(234, 231, 231);
+    border: 1px solid;
+    border-color: white;
     border-radius: 5px;
 }
 .navigation{
@@ -99,17 +105,28 @@
     cursor: pointer; 
     filter: invert(0); 
 }
-.circles img{
-    fill: white;
-    width: 11px;
-    filter: invert(1);
+.circles{
+    display: flex;
+    gap: 5px;
+}
+.circle{
+    width: 10px;  
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background: transparent;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+    outline: none;
 }
-.circles img:focus{
-    fill: white;
+.circle:hover {
+    background: rgba(255, 255, 255, 0.3); /* Added hover effect */
 }
 
-
+.circle:focus{
+    background: white;
+}
 
 /* Right part styling */
 .right-panel{

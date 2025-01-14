@@ -1,4 +1,4 @@
-import { updateInfo } from './updateInfo.js';  // Note the .js extension is required
+import { updateInfo } from './updateInfo.js'; 
 
 const baseUrl = "https://api.weatherapi.com/v1/forecast.json?key=33ffbf55c9c04658acb193505251301&days=4&q=";
 const searchBox = document.getElementById('search-box');
