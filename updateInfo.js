@@ -1,3 +1,5 @@
+import { displayDaily, displayHourly } from './forecast.js';
+
 const weather = document.getElementById('weather');
 const city = document.getElementById('location');
 const date = document.getElementById('date');
@@ -14,8 +16,70 @@ const sunrise = document.getElementById('val8');
 const sunset = document.getElementById('val9');
 const moon = document.getElementById('val10');
 const weatherIcon = document.getElementById('weather-icon');
+const daily = document.getElementById('btn1');
+const hourly = document.getElementById('btn2');
+const navigationBar = document.querySelector('.navigation');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const circles = document.querySelectorAll('.circle');
+
+let weatherData = null;
+let currentPage = 0;
+
+function updatePage() {
+    // Remove focus from previous circle
+    circles.forEach(circle => circle.blur());
+    // Update current circle background
+    circles.forEach((circle, index) => {
+        circle.style.background = index === currentPage ? 'white' : 'transparent';
+    });
+    
+    if (weatherData) {
+        displayHourly(weatherData, 'C', currentPage);
+    }
+}
+
+function initializeNavigation() {
+    navigationBar.style.display = 'none';
+
+    circles[0].style.background = 'white';
+    currentPage = 0;
+
+    circles.forEach((circle, index) => {
+        circle.addEventListener('click', () => {
+            currentPage = index;
+            updatePage();
+        });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentPage = currentPage === 0 ? 3 : currentPage - 1;
+        updatePage();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentPage = currentPage === 3 ? 0 : currentPage + 1;
+        updatePage();
+    });
+
+    hourly.addEventListener('click', () => {
+        navigationBar.style.display = 'flex';
+        if (weatherData) {
+            displayHourly(weatherData, 'C', currentPage);
+        }
+    });
+
+    daily.addEventListener('click', () => {
+        navigationBar.style.display = 'none';
+        if (weatherData) {
+            displayDaily(weatherData, 'C', 0);
+        }
+    });
+}
 
 export function updateInfo(data) {
+    weatherData = data; // Store data in variable instead of sessionStorage
+    sessionStorage.setItem('weatherData', JSON.stringify(data));
     const { current, daily, hourly,location,forecast } = data;
 
     const dateObj = new Date(current.last_updated);
@@ -40,5 +104,7 @@ export function updateInfo(data) {
     moon.textContent = forecast.forecastday[0].astro.moon_phase;
 
 }
+
+export { updatePage, initializeNavigation };
 
 

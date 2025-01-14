@@ -24,29 +24,35 @@
                     </div>
                 </div>
                 <div class="prediction-type">
-                    <div class="options">
-                        <button class="buttons" id="btn1">Daily</button>
-                        <button class="buttons" id="btn2">Hourly</button>
+                    <div class="option-container">
+                        <div class="options">
+                            <button class="buttons" id="btn1">Daily</button>
+                            <button class="buttons" id="btn2">Hourly</button>
+                        </div>
+                        <div class="navigation hidden">
+                            <div class="prev">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <title>Previous</title>
+                                    <path d="M15.41,7.41L14,6L8,12l6,6l1.41-1.41L11.83,12L15.41,8.41L15.41,7.41z"/>
+                                </svg>
+                            </div>
+                            <div class="circles">
+                                <button class="circle" id="1"></button>
+                                <button class="circle" id="2"></button>
+                                <button class="circle" id="3"></button>
+                                <button class="circle" id="4"></button>
+                            </div>
+                            <div class="next">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <title>Next</title>
+                                    <path d="M8.59,16.59L10,18l6-6l-6-6l-1.41,1.41L12.17,12L8.59,15.59L8.59,16.59z"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-                    <div class="navigation">
-                        <div class="prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <title>Previous</title>
-                                <path d="M15.41,7.41L14,6L8,12l6,6l1.41-1.41L11.83,12L15.41,8.41L15.41,7.41z"/>
-                            </svg>
-                        </div>
-                        <div class="circles">
-                            <button class="circle" id="1"></button>
-                            <button class="circle" id="2"></button>
-                            <button class="circle" id="3"></button>
-                            <button class="circle" id="4"></button>
-                        </div>
-                        <div class="next">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <title>Next</title>
-                                <path d="M8.59,16.59L10,18l6-6l-6-6l-1.41,1.41L12.17,12L8.59,15.59L8.59,16.59z"/>
-                            </svg>
-                        </div>
+                    <div class="predictions">
+                        <div class="daily-forecast"></div>
+                        <div class="hourly-forecast"></div>
                     </div>
                 </div>
             </div>      

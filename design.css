@@ -6,6 +6,18 @@
     color: white;
     font-family: 'Raleway',Arial, Helvetica, sans-serif;
 }
+
+/* Add this near the top of your CSS file */
+.navigation {
+    display: none;
+}
+
+.navigation.visible {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .workspace{
     background-image: url(assets/asset\ 15.jpeg);
     background-repeat: no-repeat;
@@ -59,34 +71,20 @@
 
 .prediction-type{
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding-top: 0px;
+}
+.option-container{
+    display: flex;
     gap: 40px;
 }
 .options{
     display: flex;
     gap: 20px;
 }
-.buttons{
-    font-size: 15px;
-    background: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 2px;
-    min-width: 60px;
-}
 .hidden{
     display: none;
-}
-.buttons:hover{
-    color: rgb(168, 168, 168);
-    border-color: rgb(168, 168, 168)
-}
-.buttons:focus{
-    outline: none;
-    border: 1px solid;
-    border-color: white;
-    border-radius: 5px;
 }
 .navigation{
     display: flex;
@@ -105,6 +103,11 @@
     cursor: pointer; 
     filter: invert(0); 
 }
+.prev.disabled,
+.next.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 .circles{
     display: flex;
     gap: 5px;
@@ -119,15 +122,38 @@
     padding: 0;
     margin: 0;
     outline: none;
+    transition: all 0.3s ease;
 }
 .circle:hover {
-    background: rgba(255, 255, 255, 0.3); /* Added hover effect */
+    background: rgba(255, 255, 255, 0.3);
 }
 
-.circle:focus{
-    background: white;
+.circle[style*="background: white"] {
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.6);
 }
 
+/* Remove focus styles */
+.circle:focus {
+    outline: none;
+}
+
+.predictions{
+    padding-top: 10px;
+}
+.daily-forecast,.hourly-forecast{
+    display: flex;
+    padding-left: 14px;
+    gap: 40px;
+}
+.day,.hour{
+    font-size: 12px;
+}
+.day-max-temp,.day-min-temp,.hour-temp{
+    font-size: 20px;
+}
+.predict-container img{
+    width: 20px;
+}
 /* Right part styling */
 .right-panel{
     padding: 30px 0px;
@@ -203,4 +229,50 @@
 }
 .sub-heading img{
     width: 24px;
+}
+
+/* Update button styling */
+.buttons {
+    font-size: 15px;
+    background: transparent;
+    color: white;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 5px 10px;
+    min-width: 60px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.buttons:hover {
+    color: rgb(168, 168, 168);
+    border-color: rgb(168, 168, 168);
+}
+
+.buttons.active {
+    border-color: white;
+}
+
+.hourly-forecast > div {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hourly-forecast {
+    position: relative;
+    min-height: 150px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.hour-cards-container {
+    display: flex;
+    gap: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hourly-forecast > div > div {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
 }

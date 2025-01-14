@@ -1,9 +1,20 @@
-import { updateInfo } from './updateInfo.js'; 
+import { updateInfo } from './updateInfo.js';
+import { displayDaily, displayHourly } from './forecast.js';
+import { updatePage, initializeNavigation } from './updateInfo.js';
+
+// Initialize navigation at the start
+initializeNavigation();
 
 const baseUrl = "https://api.weatherapi.com/v1/forecast.json?key=33ffbf55c9c04658acb193505251301&days=4&q=";
 const searchBox = document.getElementById('search-box');
 const searchBtn = document.getElementById('search-btn');
 const error = document.getElementById('error');
+
+const dailyBtn = document.getElementById('btn1');
+const hourlyBtn = document.getElementById('btn2');
+const navigationBar = document.querySelector('.navigation'); // Add this line
+
+dailyBtn.classList.add('active');
 
 async function getWeather(city){
     try {
@@ -18,6 +29,11 @@ async function getWeather(city){
         console.log(data);
 
         updateInfo(data);
+        if (hourlyBtn.matches(':focus')) {
+            displayHourly(data, 'C', 0);
+        } else {
+            displayDaily(data, 'C', 0);
+        }
         error.textContent = "";
         return data;
     } 
@@ -32,47 +48,32 @@ getWeather("Noida");
 searchBtn.addEventListener('click', async () => {
     const city = searchBox.value;
     await getWeather(city);
+    dailyBtn.classList.add('active');
+    hourlyBtn.classList.remove('active');
+    navigationBar.style.display = 'none';
     searchBox.value = "";
 });
 searchBox.addEventListener('keypress', async (e) => {
     if (e.key === 'Enter') {
         const city = searchBox.value;
         await getWeather(city);
+        dailyBtn.classList.add('active');
+        hourlyBtn.classList.remove('active');
+        navigationBar.style.display = 'none';
         searchBox.value = "";
     }
 });
 
-// function getCityName() {
-//     if ("geolocation" in navigator) {
-//       navigator.geolocation.getCurrentPosition(
-//         async (position) => {
-//           const { latitude, longitude } = position.coords;
-          
-//           try {
-//             // Using OpenStreetMap's Nominatim service for reverse geocoding
-//             const response = await fetch(
-//               `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-//             );
-//             const data = await response.json();
-            
-//             // The address object contains city/town/village info
-//             const city = data.address.city || 
-//                         data.address.town || 
-//                         data.address.village || 
-//                         'City not found';
-                        
-//             console.log('Current city:', city);
-//           } catch (error) {
-//             console.error('Error getting city name:', error);
-//           }
-//         },
-//         (error) => {
-//           console.error('Geolocation error:', error);
-//         }
-//       );
-//     } else {
-//       console.log('Geolocation is not supported by this browser');
-//     }
-//   }
+dailyBtn.addEventListener('click', async () => {
+    const data = await getWeather(searchBox.value || 'Noida');
+    displayDaily(data, 'C', 0);
+    dailyBtn.classList.add('active');
+    hourlyBtn.classList.remove('active');
+});
 
-//   console.log(getCityName());
+hourlyBtn.addEventListener('click', async () => {
+    const data = await getWeather(searchBox.value || 'Noida');
+    displayHourly(data, 'C', 0);
+    hourlyBtn.classList.add('active');
+    dailyBtn.classList.remove('active');
+});
