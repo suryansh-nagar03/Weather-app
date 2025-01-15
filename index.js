@@ -53,3 +53,24 @@ searchBtn.addEventListener('click', async () => {
     navigationBar.style.display = 'none';
     searchBox.value = "";
 });
+
+searchBox.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+        const city = searchBox.value;
+        await getWeather(city);
+        dailyBtn.classList.add('active');
+        hourlyBtn.classList.remove('active');
+        navigationBar.style.display = 'none';
+        searchBox.value = "";
+    }
+});
+
+dailyBtn.addEventListener('click', () => {
+    dailyBtn.classList.add('active');
+    hourlyBtn.classList.remove('active');
+});
+
+hourlyBtn.addEventListener('click', () => {
+    hourlyBtn.classList.add('active');
+    dailyBtn.classList.remove('active');
+});

@@ -62,8 +62,13 @@ function initializeNavigation() {
         updatePage();
     });
 
+    const dailyBtn = document.getElementById('btn1');
+    const hourlyBtn = document.getElementById('btn2');
+
     hourly.addEventListener('click', () => {
         navigationBar.style.display = 'flex';
+        hourlyBtn.classList.add('active');
+        dailyBtn.classList.remove('active');
         if (weatherData) {
             displayHourly(weatherData, 'C', currentPage);
         }
@@ -71,6 +76,8 @@ function initializeNavigation() {
 
     daily.addEventListener('click', () => {
         navigationBar.style.display = 'none';
+        dailyBtn.classList.add('active');
+        hourlyBtn.classList.remove('active');
         if (weatherData) {
             displayDaily(weatherData, 'C', 0);
         }
