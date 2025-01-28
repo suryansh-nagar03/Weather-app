@@ -7,7 +7,7 @@ function displayDaily(object,unit,slide){
     dailyForecast.textContent = "";
     hourlyForecast.textContent = "";
 
-    for(let i=0;i<4;i++){
+    for(let i=0;i<2;i++){
         const card = document.createElement('div');
         const day = document.createElement('div');
         const maxTemp = document.createElement('div');

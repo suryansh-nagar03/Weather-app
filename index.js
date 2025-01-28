@@ -9,7 +9,6 @@ const baseUrl = "https://api.weatherapi.com/v1/forecast.json?key=33ffbf55c9c0465
 const searchBox = document.getElementById('search-box');
 const searchBtn = document.getElementById('search-btn');
 const error = document.getElementById('error');
-
 const dailyBtn = document.getElementById('btn1');
 const hourlyBtn = document.getElementById('btn2');
 const navigationBar = document.querySelector('.navigation'); // Add this line
